@@ -1,0 +1,7 @@
+{
+  "logoImageUrl": "/images/logo.png",
+  "logoClickUrl": "",
+  "labels": {
+    "en": "/static/labels-en.json"
+  }
+}

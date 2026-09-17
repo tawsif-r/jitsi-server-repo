@@ -1,0 +1,18 @@
+{
+  "welcomepage": {
+    "headerTitle": "DNS Meet",
+    "jitsiOnMobile": "DNS Meet on mobile – download our apps and start a meeting from anywhere",
+    "logo": {
+      "logoDeepLinking": "DNS Meet logo"
+    }
+  },
+  "calendarSync": {
+    "confirmAddLink": "Do you want to add a DNS Meet link to this event?"
+  },
+  "notify": {
+    "oldElectronClientDescription1": "You appear to be using an old version of the DNS Meet client which has known security vulnerabilities. Please make sure you update to our "
+  },
+  "incomingCall": {
+    "productLabel": "from DNS Meet"
+  }
+}
