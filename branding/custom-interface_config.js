@@ -12,3 +12,8 @@ interfaceConfig.DEFAULT_LOGO_URL = 'images/logo.png';
 interfaceConfig.SHOW_JITSI_WATERMARK = true;
 interfaceConfig.JITSI_WATERMARK_LINK = '';
 interfaceConfig.SHOW_POWERED_BY = false;
+
+// Welcome page footer ("… on mobile" + App Store / Google Play / F-Droid links).
+interfaceConfig.DISPLAY_WELCOME_FOOTER = false;
+// Mobile-browser interstitial that pushes the store apps.
+interfaceConfig.MOBILE_APP_PROMO = false;
