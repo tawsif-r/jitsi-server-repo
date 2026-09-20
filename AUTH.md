@@ -66,6 +66,7 @@ Currently registered: `host`.
 |------|--------|
 | Everyone must log in, no guests at all | `ENABLE_GUESTS=0` in `.env`, then `docker compose up -d --force-recreate` |
 | Per-room password on top (e.g. `1234`) | No config. Moderator → Security options → Add password. Lasts while room is alive. |
+| Password fixed at scheduling time | Reservation service, see [SCHEDULING.md](SCHEDULING.md) — prosody sets it when the room opens. |
 | Back to open rooms | Comment out `ENABLE_AUTH`, recreate containers |
 
 Any `.env` change to these three variables needs `docker compose up -d --force-recreate`

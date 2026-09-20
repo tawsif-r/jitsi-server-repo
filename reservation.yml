@@ -1,0 +1,33 @@
+# Meeting scheduler + Prosody reservation backend.
+#   docker compose -f docker-compose.yml -f reservation.yml up -d
+# UI on http://<host>:${RESERVATION_PORT:-8600}. See SCHEDULING.md.
+services:
+    reservation:
+        image: python:3.12-alpine
+        restart: ${RESTART_POLICY:-unless-stopped}
+        command: python /app/app.py
+        ports:
+            - '${RESERVATION_PORT:-8600}:8600'
+        volumes:
+            - ./reservation/app.py:/app/app.py:ro
+            - ${CONFIG}/reservation:/data:Z
+        environment:
+            - PUBLIC_URL
+            - TZ
+            - RESERVATION_ALLOW_UNSCHEDULED
+            - RESERVATION_ADHOC_HOURS
+            - RESERVATION_EARLY_JOIN_MIN
+            - RESERVATION_UI_PASSWORD
+        networks:
+            meet.jitsi:
+                aliases:
+                    - reservation.meet.jitsi
+
+    prosody:
+        depends_on:
+            - reservation
+        volumes:
+            - ./reservation/prosody-reservations.cfg.lua:/config/conf.d/prosody-reservations.cfg.lua:ro
+        environment:
+            - PROSODY_RESERVATION_ENABLED=1
+            - PROSODY_RESERVATION_REST_BASE_URL=http://reservation.meet.jitsi:8600
