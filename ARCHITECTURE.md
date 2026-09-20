@@ -41,7 +41,7 @@ JVB_ADVERTISE_IPS=192.168.3.35
 CONFIG=~/.jitsi-meet-cfg
 ```
 
-Everything else is template default: `ENABLE_AUTH` off (anonymous rooms), `ENABLE_P2P=true`,
+Auth: `ENABLE_AUTH=1`, `ENABLE_GUESTS=1`, `AUTH_TYPE=internal` (see AUTH.md). Everything else is template default: `ENABLE_P2P=true`,
 `ENABLE_SIMULCAST=true`, `RESOLUTION=720`, `CODEC_ORDER_JVB=[AV1,VP9,VP8,H264]`,
 `START_AUDIO_MUTED=10`, `START_VIDEO_MUTED=10`, `MAX_PARTICIPANTS` unset (no cap),
 `channelLastN` unset (client adaptive), `ENABLE_XMPP_WEBSOCKET=1`, lobby / breakout / AV-moderation / polls on.
