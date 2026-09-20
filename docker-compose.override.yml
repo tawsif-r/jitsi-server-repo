@@ -1,0 +1,28 @@
+# Branding overrides — auto-merged by `docker compose` on top of docker-compose.yml.
+# Replaces Jitsi logos/text with DNS Meet branding without touching the image.
+# Source files live in ./branding. See jitsi-logo-locations.md.
+services:
+    web:
+        volumes:
+            # Appended to interface_config.js at boot (sets APP_NAME, DEFAULT_LOGO_URL, ...)
+            - ./branding/custom-interface_config.js:/config/custom-interface_config.js:ro
+            # Appended to config.js at boot (points dynamicBrandingUrl at branding.json)
+            - ./branding/custom-config.js:/config/custom-config.js:ro
+            - ./branding/branding.json:/usr/share/jitsi-meet/static/branding.json:ro
+            - ./branding/labels-en.json:/usr/share/jitsi-meet/static/labels-en.json:ro
+            # New logo, referenced by interface_config + title.html
+            - ./branding/logo.png:/usr/share/jitsi-meet/images/logo.png:ro
+            # Replace stock Jitsi PNGs in place
+            - ./branding/logo.png:/usr/share/jitsi-meet/images/jitsilogo.png:ro
+            - ./branding/logo.png:/usr/share/jitsi-meet/images/logo-deep-linking.png:ro
+            - ./branding/logo.png:/usr/share/jitsi-meet/images/logo-deep-linking-mobile.png:ro
+            - ./branding/apple-touch-icon.png:/usr/share/jitsi-meet/images/apple-touch-icon.png:ro
+            - ./branding/pwa/icon192.png:/usr/share/jitsi-meet/static/pwa/icons/icon192.png:ro
+            - ./branding/pwa/icon512.png:/usr/share/jitsi-meet/static/pwa/icons/icon512.png:ro
+            - ./branding/pwa/iconMask.png:/usr/share/jitsi-meet/static/pwa/icons/iconMask.png:ro
+            # <title>, og:*, favicon (SSI-included into index.html)
+            - ./branding/title.html:/usr/share/jitsi-meet/title.html:ro
+            # PWA name
+            - ./branding/manifest.json:/usr/share/jitsi-meet/manifest.json:ro
+            # "Jitsi Meet" -> "DNS Meet" UI strings (English)
+            - ./branding/lang/main.json:/usr/share/jitsi-meet/lang/main.json:ro
