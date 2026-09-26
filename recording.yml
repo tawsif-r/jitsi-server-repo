@@ -1,0 +1,13 @@
+# Recording format overlay — use together with jibri.yml.
+# Mounts the finalize script that converts Jibri's MP4 into the format set in .env
+# (RECORDING_FORMAT / RECORDING_AUDIO_ONLY / RECORDING_AUDIO_FORMAT / RECORDING_KEEP_ORIGINAL).
+services:
+    jibri:
+        volumes:
+            - ./recording/finalize.sh:/config/finalize.sh:ro
+        environment:
+            - JIBRI_FINALIZE_RECORDING_SCRIPT_PATH=/config/finalize.sh
+            - RECORDING_FORMAT
+            - RECORDING_AUDIO_ONLY
+            - RECORDING_AUDIO_FORMAT
+            - RECORDING_KEEP_ORIGINAL
